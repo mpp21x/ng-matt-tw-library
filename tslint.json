@@ -1,0 +1,21 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "mattTw",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "matt-tw",
+      "kebab-case"
+    ],
+    "typedef": [
+      false,
+      "call-signature"
+    ]
+  }
+}

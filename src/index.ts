@@ -14,11 +14,11 @@ export {checkStringIsDate} from './lib/check/check-string-is-date';
 export {oneDayPeriod, fromStartToEndPeriod, startDay, endDay} from './lib/date/one-day-period';
 /** download file */
 export {exportCsvFile} from './lib/file-download/export-csv-file';
-export {saveFileResponse} from './lib/file-download/save-file-response';
+export {saveFileResponse} from './ng-lib/file-download/save-file-response';
 /** show error */
-export {showFormErrors} from './lib/form/show-form-errors';
+export {showFormErrors} from './ng-lib/form/show-form-errors';
 /** helper */
-export {createHttpParams} from './lib/http/create-http-params';
+export {createHttpParams} from './ng-lib/http/create-http-params';
 export {StatusCode} from './lib/http/status-code';
 /** paginator */
 export {Paginator} from './lib/paginator/paginator';

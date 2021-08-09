@@ -5,6 +5,12 @@
  * lib
  */
 /** check */
+import {NgModule} from '@angular/core';
+import { BootstrapFormModule } from './modules/bootstrap-form/bootstrap-form.module';
+import { FormModule } from './modules/form/form.module';
+export {FormModule} from './modules/form/form.module';
+export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
+
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
 export {checkIsMatchInOneTypes} from './lib/check/check-is-match-in-one-types';
 export {checkIsOverOneDay} from './lib/check/check-is-over-one-day';
@@ -42,7 +48,7 @@ export * from './lib/utils/string-or-number-type';
  * Form lib
  */
 export {setFormFieldErrorsFromNgValidators} from './modules/form/lib/set-form-field-errors-from-ng-validators';
-export {FormHelperService} from './modules/form/services/form-helper.service';
+// export {FormHelperService} from './modules/form/services/form-helper.service';
 export {FormHelper} from './modules/form/lib/form-helper';
 export {FormPage} from './modules/form/lib/form-page';
 
@@ -54,5 +60,14 @@ export {ValidatorPasswordMustSame} from './modules/form/validators/validator-pas
 export {ValidatorUrl} from './modules/form/validators/validator-url';
 export {ValidatorsCheckDate} from './modules/form/validators/validators-check-date';
 
-export {FormModule} from './modules/form/form.module';
 
+export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
+
+const MODULES = [
+  FormModule,
+  BootstrapFormModule,
+];
+
+@NgModule({imports: MODULES, exports: MODULES})
+export class MattTwModule {
+}

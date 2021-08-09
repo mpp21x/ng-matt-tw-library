@@ -11,7 +11,7 @@ import * as R from 'ramda';
 })
 export class BootstrapInputComponent implements OnChanges {
   @Input() labelText = '';
-  @Input() isRequired = null;
+  @Input() isRequired: null | boolean;
   @Input() type: 'text' | 'file' | 'number' | 'time' | 'email' | 'password' = 'text';
   @Input() bgControl: AbstractControl;
   @Input() showIsInvalid = false;

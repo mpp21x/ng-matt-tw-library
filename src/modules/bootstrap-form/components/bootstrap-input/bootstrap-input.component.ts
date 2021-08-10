@@ -11,13 +11,14 @@ import * as R from 'ramda';
 })
 export class BootstrapInputComponent implements OnChanges {
   @Input() labelText = '';
-  @Input() isRequired: null | boolean;
+  @Input() isRequired: null | boolean = null;
   @Input() type: 'text' | 'file' | 'number' | 'time' | 'email' | 'password' = 'text';
   @Input() bgControl: AbstractControl;
   @Input() showIsInvalid = false;
   @Input() errorMessages = '';
   @Input() maxLength = 50;
   @Input() placeholder = '';
+  test;
 
   constructor(
     protected readonly changeDetectorRef: ChangeDetectorRef,
@@ -25,14 +26,14 @@ export class BootstrapInputComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.changeDetectorRef.detectChanges();
+    this.changeDetectorRef.markForCheck();
   }
 
   showLabelIsRequired() {
-    if (this.isRequired === null && !R.is(FormControl, this.getControl())) {
-      return false;
-    } else if (this.isRequired !== null) {
+    if (this.isRequired !== null) {
       return this.isRequired;
+    } else if (this.isRequired === null && !R.is(FormControl, this.getControl())) {
+      return false;
     } else {
       return checkHasValidator(this.getControl(), Validators.required);
     }

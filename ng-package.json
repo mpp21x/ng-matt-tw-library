@@ -7,7 +7,8 @@
       "moment": "moment",
       "ramda": "R",
       "sweetalert2" : "swal",
-      "ngx-spinner": "i1"
+      "ngx-spinner": "i1",
+      "@ng-bootstrap/ng-bootstrap": "i2"
     }
   }
 }

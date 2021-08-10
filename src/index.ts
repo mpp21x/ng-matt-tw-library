@@ -7,8 +7,9 @@
 /** check */
 import {NgModule} from '@angular/core';
 import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
-import { BootstrapTableModule } from './modules/bootstrap-table/bootstrap-table.module';
+import {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 import {FormModule} from './modules/form/form.module';
+import {BootstrapPaginationTableComponent} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 
 
 export {checkIsIpv4} from './lib/check/check-is-ipv4';
@@ -64,6 +65,9 @@ export {BootstrapInputComponent} from './modules/bootstrap-form/components/boots
 export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 /** Bootstrap Table */
 export {BootstrapTableComponent} from './modules/bootstrap-table/components/bootstrap-table/bootstrap-table.component';
+export {
+  BootstrapPaginationTableComponent
+} from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
 
 const MODULES = [

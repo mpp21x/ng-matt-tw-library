@@ -13,12 +13,12 @@ export class BootstrapTableComponent {
   @Input() total = 0;
   @Input() showAmount = 50;
   @Input() tableClass = 'table-striped';
-  @Output() reloadEmitter = new EventEmitter<any>();
+  @Output() reload = new EventEmitter();
 
   constructor() {
   }
 
-  reload() {
-    this.reloadEmitter.emit();
+  onReload() {
+    this.reload.emit();
   }
 }

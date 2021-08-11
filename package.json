@@ -1,10 +1,9 @@
 {
   "name": "ng-matt-tw-library",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "peerDependencies": {
     "@angular/common": ">=11.0.0",
     "@angular/core": ">=11.0.0",
-    "@types/ramda": "^0.27.44",
     "ngx-spinner": ">=11.0.0",
     "ramda": ">=0.27.1",
     "sweetalert2": ">=11.1.2",

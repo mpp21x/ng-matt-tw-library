@@ -6,8 +6,6 @@ export function checkHasValidator(control: FormControl, validatorFn: ValidatorFn
     return false;
   }
   const validators = (control as { '_rawValidators': ValidatorFn[] })._rawValidators;
-  console.log(`validators`);
-  console.log(validators);
   if (!Array.isArray(validators)) {
     return false;
   } else if (validators.includes(validatorFn)) {

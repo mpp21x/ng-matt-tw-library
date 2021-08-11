@@ -23,10 +23,7 @@ export class Paginator<T> {
   }
 
   isNotEmpty(): boolean {
-    let b = !!(this.data.length);
-    console.log('isNotEmpty');
-    console.log(b);
-    return b;
+    return !!(this.data.length);
   }
 
   isEmpty(): boolean {

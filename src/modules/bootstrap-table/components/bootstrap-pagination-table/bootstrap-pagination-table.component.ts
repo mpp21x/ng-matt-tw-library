@@ -11,9 +11,14 @@ export class BootstrapPaginationTableComponent {
   @Input() perPage = 10;
   @Input() currentPage = 1;
   @Input() total = 0;
-  @Input() tableClass = 'table-striped';
+
+  @Input() tableClass = 'table table-striped';
+  @Input() totalClass = 'badge badge-primary badge-pill m-1';
+  @Input() reloadButtonClass = 'btn btn-sm btn-primary rounded-pill m-1 ml-2';
+  @Input() reloadButtonIconClass = 'fas fa-redo';
 
   @Output() changePage = new EventEmitter<number>();
+
 
   constructor() {
   }

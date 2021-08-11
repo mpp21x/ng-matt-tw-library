@@ -12,7 +12,12 @@ export class BootstrapTableComponent {
   @Input() isShowReloadButton = true;
   @Input() total = 0;
   @Input() showAmount = 50;
-  @Input() tableClass = 'table-striped';
+
+  @Input() tableClass = 'table table-striped';
+  @Input() totalClass = 'badge badge-primary badge-pill m-1';
+  @Input() reloadButtonClass = 'btn btn-sm btn-primary rounded-pill m-1 ml-2';
+  @Input() reloadButtonIconClass = 'fas fa-redo';
+
   @Output() reload = new EventEmitter();
 
   constructor() {

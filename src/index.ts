@@ -46,10 +46,16 @@ export * from './lib/utils/string-or-number-type';
  * modules
  */
 /** Form */
-export {setFormFieldErrorsFromNgValidators} from './modules/form/lib/set-form-field-errors-from-ng-validators';
-// export {FormHelperService} from './modules/form/services/form-helper.service';
+export {BaseFormHelperFactory} from './modules/form/lib/base-form-helper-factory';
+export {LaravelHttpErrorMessage} from './modules/form/lib/plugin/laravel-http-error-message';
+export {NgErrorMessager} from './modules/form/lib/plugin/ng-error-messager';
+export {NgxSpinnerLoading} from './modules/form/lib/plugin/ngx-spinner-loading';
+export {SweetalertEnding} from './modules/form/lib/plugin/sweetalert-ending';
+export {FormEnding} from './modules/form/lib/form-ending';
 export {FormHelper} from './modules/form/lib/form-helper';
-export {FormPage} from './modules/form/lib/form-page';
+export {FormHttpErrorMessager} from './modules/form/lib/form-http-error-messager';
+export {FormLoading} from './modules/form/lib/form-loading';
+export {FormNgErrorMessager} from './modules/form/lib/form-ng-error-messager';
 
 export {RequiredLabelDirective} from './modules/form/directives/required-label.directive';
 

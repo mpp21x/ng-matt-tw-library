@@ -18,7 +18,6 @@ export class BootstrapInputComponent implements OnChanges {
   @Input() errorMessages = '';
   @Input() maxLength = 50;
   @Input() placeholder = '';
-  @Input() disabled = false;
 
   constructor(
     protected readonly changeDetectorRef: ChangeDetectorRef,

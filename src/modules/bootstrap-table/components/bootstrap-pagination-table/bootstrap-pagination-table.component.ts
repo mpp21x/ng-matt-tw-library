@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'matt-tw-bootstrap-pagination-table',
   templateUrl: './bootstrap-pagination-table.component.html',
   styleUrls: ['./bootstrap-pagination-table.component.scss'],
 })
-export class BootstrapPaginationTableComponent implements OnInit, OnChanges {
+export class BootstrapPaginationTableComponent {
 
   @Input() isNotEmpty = true;
   @Input() perPage = 10;
@@ -16,14 +16,6 @@ export class BootstrapPaginationTableComponent implements OnInit, OnChanges {
   @Output() changePage = new EventEmitter<number>();
 
   constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('onChangePage');
-    console.log(this.isNotEmpty);
   }
 
   getTotal() {

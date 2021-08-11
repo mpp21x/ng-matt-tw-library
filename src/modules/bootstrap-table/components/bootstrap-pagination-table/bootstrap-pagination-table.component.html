@@ -21,7 +21,7 @@
   <div *ngTemplateOutlet="tPagination"></div>
   <div *ngTemplateOutlet="tTotal"></div>
 </div>
-<!--<ng-template #emptyTable>
+<ng-template #emptyTable>
   <table class="table table-striped">
     <tbody>
     <tr class="text-center">
@@ -31,7 +31,7 @@
     </tr>
     </tbody>
   </table>
-</ng-template>-->
+</ng-template>
 
 <ng-template #tTotal let-showRefreshButton>
   <div class="font-medium-2">
@@ -46,8 +46,9 @@
         {{ perPage }}
       </span>筆資料
     </ng-container>
-    <button *ngIf="showRefreshButton" class="btn btn-sm btn-round btn-raised mt-2 btn-primary btn-reload"
-            (click)="onSearch()">
+    <button *ngIf="showRefreshButton" (click)="onSearch()"
+            class="btn btn-sm btn-round btn-primary m-1 ml-2"
+            style="border-radius: 100%;padding: 4px;margin-left: 0.2rem;">
       <em class="fas fa-redo-alt m-1"></em>
     </button>
   </div>

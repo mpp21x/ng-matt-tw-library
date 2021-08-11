@@ -1,13 +1,13 @@
 import {FormGroup} from '@angular/forms';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import * as R from 'ramda';
-import {StatusCode} from 'ng-matt-tw-library';
 import {FormLoading} from './form-loading';
 import {FormHttpErrorMessager} from './form-http-error-messager';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {FormEnding} from './form-ending';
 import {NgErrorMessager} from './plugin/ng-error-messager';
+import {StatusCode} from '../../../lib/http/status-code';
 
 export class FormHelper {
   isLoading = false;

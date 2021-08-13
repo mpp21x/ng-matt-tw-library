@@ -47,8 +47,6 @@ export class FormHelper {
   }
 
   async endLoading(result: boolean, msg: string, detailMsg = '') {
-    this.isLoading = false;
-
     return this.ending.end({
       result,
       message: msg,
@@ -93,9 +91,13 @@ export class FormHelper {
    * @param rx
    */
   afterSubmit(rx: Observable<any>) {
+    const fn = () => {
+      this.loading.end();
+      this.isLoading = false;
+    };
     return rx.pipe(tap({
-      next: () => this.loading.end(),
-      error: () => () => this.loading.end(),
+      next: fn,
+      error: fn,
     }));
   }
 

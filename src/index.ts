@@ -68,6 +68,10 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 export {FormModule} from './modules/form/form.module';
 /** Bootstrap Form */
 export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
+export {BootstrapSelectComponent} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
+export {BootstrapTextareaComponent} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
+export {BaseComponent} from './modules/bootstrap-form/components/base.component';
+
 export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 /** Bootstrap Table */
 export {BootstrapTableComponent} from './modules/bootstrap-table/components/bootstrap-table/bootstrap-table.component';

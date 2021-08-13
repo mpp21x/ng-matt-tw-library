@@ -6,6 +6,7 @@ import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 })
 export class RequiredLabelDirective implements OnInit {
 
+  @Input() text = '*';
   @Input() isRequired = true;
 
   constructor(
@@ -19,9 +20,12 @@ export class RequiredLabelDirective implements OnInit {
       return;
     }
     const child = document.createElement('strong');
-    child.innerText = '*';
-    child.className = 'text-danger h5';
-    this.renderer.appendChild(this.elementRef.nativeElement, child);
+    this.renderer.setStyle(child, 'margin', '5px');
+    this.renderer.setProperty(child, 'className', 'text-danger h5');
+    this.renderer.setProperty(child, 'innerText', this.text);
+    const nativeElement = this.elementRef.nativeElement as HTMLElement;
+    this.renderer.insertBefore(nativeElement, child, nativeElement.firstChild);
+
   }
 
 }

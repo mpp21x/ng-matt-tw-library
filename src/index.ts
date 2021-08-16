@@ -67,6 +67,7 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 
 export {FormModule} from './modules/form/form.module';
 /** Bootstrap Form */
+export {SelectOption} from './modules/bootstrap-form/lib/select.option';
 export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
 export {BootstrapSelectComponent} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
 export {BootstrapTextareaComponent} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';

@@ -41,8 +41,6 @@ export class BootstrapSelectComponent extends BaseComponent implements OnInit, O
       return option.value === this.getControl().value;
     }
 
-    console.log(`this.getControl().value`);
-    console.log(this.getControl().value);
     if (!R.is(Array, this.getControl().value)) {
       throw new Error(`${this.name} is not array(bg select input component)`);
     }

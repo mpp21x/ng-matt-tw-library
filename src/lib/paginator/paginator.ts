@@ -6,7 +6,7 @@ export class Paginator<T> {
   data: T[] = [];
   perPage = 10;
   total = 0;
-  createModelFn?: (...params: any) => T;
+  private createModelFn?: (...params: any) => T = null;
 
   constructor(object = null) {
     this.assign(object);
@@ -60,8 +60,8 @@ export class Paginator<T> {
   setValue(currentPage: number, total: number, data: T[]) {
     this.currentPage = currentPage;
     this.total = total;
-    if (R.is(Array, data)) {
-      this.data = (data as []).map(this.createModelFn);
+    if (R.is(Array, data) && this.createModelFn) {
+      this.data = data.map(this.createModelFn);
     }
   }
 }

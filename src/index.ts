@@ -37,6 +37,7 @@ export {fillZeroWhenLessThanTen} from './lib/utils/fill-zero-when-less-than-ten'
 export {getLastOne} from './lib/utils/get-last-one';
 export {isEmptyExceptZero} from './lib/utils/is-empty-except-zero';
 export {isNilOrEmpty} from './lib/utils/is-nil-or-empty';
+export {getNestedProp} from './lib/utils/nested-prop-is-exists';
 export {nestedPropIsExists} from './lib/utils/nested-prop-is-exists';
 export {numberFormat} from './lib/utils/number-format';
 export {prettyJsonString} from './lib/utils/pretty-json-string';

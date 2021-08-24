@@ -25,7 +25,5 @@ export class RequiredLabelDirective implements OnInit {
     this.renderer.setProperty(child, 'innerText', this.text);
     const nativeElement = this.elementRef.nativeElement as HTMLElement;
     this.renderer.insertBefore(nativeElement, child, nativeElement.firstChild);
-
   }
-
 }

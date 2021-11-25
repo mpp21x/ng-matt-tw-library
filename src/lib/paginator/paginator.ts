@@ -23,9 +23,12 @@ export class Paginator<T> {
     this.total = 0;
   }
 
-  setValue(currentPage: number, total: number, data: T[]) {
+  setValue(currentPage: number, total: number, data: T[], perPage?: number) {
     this.currentPage = currentPage;
     this.total = total;
     this.data = data;
+    if (perPage && typeof perPage === 'number') {
+      this.perPage = perPage;
+    }
   }
 }

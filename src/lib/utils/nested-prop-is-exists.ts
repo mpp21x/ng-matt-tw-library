@@ -1,15 +1,15 @@
-export function getNestedProp(nestedProperty: string, taget: unknown) {
+export function getNestedProp(nestedProperty: string, target: unknown) {
 
   const restOfPropertyNames = nestedProperty.split('.');
   const length = restOfPropertyNames.length;
   let i;
   for (i = 0; i < length; i++) {
-    if (!taget || !taget.hasOwnProperty(restOfPropertyNames[i])) {
+    if (!target || !target.hasOwnProperty(restOfPropertyNames[i])) {
       return false;
     }
-    taget = taget[restOfPropertyNames[i]];
+    target = target[restOfPropertyNames[i]];
   }
-  return taget;
+  return target;
 }
 
 

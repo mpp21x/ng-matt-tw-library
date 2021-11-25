@@ -13,12 +13,11 @@ export class BootstrapInputComponent implements OnChanges {
   @Input() labelText = '';
   @Input() isRequired: null | boolean = null;
   @Input() type: 'text' | 'file' | 'number' | 'time' | 'email' | 'password' = 'text';
-  @Input() bgControl: AbstractControl;
+  @Input() control: AbstractControl;
   @Input() showIsInvalid = false;
   @Input() errorMessages = '';
   @Input() maxLength = 50;
   @Input() placeholder = '';
-  @Input() disabled = false;
 
   constructor(
     protected readonly changeDetectorRef: ChangeDetectorRef,
@@ -40,6 +39,6 @@ export class BootstrapInputComponent implements OnChanges {
   }
 
   getControl() {
-    return this.bgControl as FormControl;
+    return this.control as FormControl;
   }
 }

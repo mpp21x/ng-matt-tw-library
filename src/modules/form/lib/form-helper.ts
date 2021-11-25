@@ -1,43 +1,57 @@
-import {FormGroup, ValidationErrors} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {setFormFieldErrorsFromNgValidators} from './set-form-field-errors-from-ng-validators';
 import * as R from 'ramda';
-import {FormPage} from './form-page';
+import {FormLoading} from './form-loading';
+import {FormHttpErrorMessager} from './form-http-error-messager';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {FormEnding} from './form-ending';
+import {NgErrorMessager} from './plugin/ng-error-messager';
 import {StatusCode} from '../../../lib/http/status-code';
-import {NgxSpinnerService} from 'ngx-spinner';
-import swal from 'sweetalert2';
 
 export class FormHelper {
   isLoading = false;
+
+  defaultErrorMessage = '儲存失敗';
+
   /** Laravel Validation Error Message */
-  errorMessagesFromResponse: {
-    [controlName: string]: string[];
-  } = {};
 
   constructor(
-    public readonly spinner: NgxSpinnerService,
-    private readonly form: FormGroup
+    protected readonly loading: FormLoading,
+    protected readonly ending: FormEnding<unknown>,
+    protected readonly ngErrorMessager: NgErrorMessager,
+    protected readonly httpErrorMessager: FormHttpErrorMessager,
+    protected readonly _form: FormGroup
   ) {
   }
 
-  unableToSendRequest(): boolean {
-    this.form.markAllAsTouched();
+  unableToSubmit(): boolean {
+    this._form.markAllAsTouched();
     if (this.isLoading) {
       return true;
     }
-    this.startLoading();
-    if (this.form.invalid) {
+    this.isLoading = true;
+    if (this._form.invalid) {
       this.endLoading(false, '表單尚未輸入完！請輸入完後再次提交');
       return true;
     }
     return false;
   }
 
-  async endLoading(operationResult: boolean, msg = '未知錯誤', detailMsg = '') {
-    this.isLoading = false;
+  /**
+   * 常用於清除預設值，以及開啟載入畫面
+   */
+  beforeSubmit() {
+    this.httpErrorMessager.clean();
+    this.loading.start();
+  }
 
-    this.hideSpinner();
-    return swal.fire(msg, detailMsg, operationResult ? 'success' : 'error');
+  async endLoading(result: boolean, msg: string, detailMsg = '') {
+    return this.ending.end({
+      result,
+      message: msg,
+      detailMsg,
+    });
   }
 
 
@@ -50,13 +64,8 @@ export class FormHelper {
     });
   }
 
-  /**
-   * Better
-   */
   defaultFormSubmitFailedFn(): (res: HttpErrorResponse) => void {
     return (res: HttpErrorResponse): void => {
-
-      this.spinner.hide();
       if (res.status === StatusCode.UNAUTHORIZED) {
         return;
       }
@@ -64,37 +73,41 @@ export class FormHelper {
       switch (res.status) {
         case StatusCode.UNPROCESSABLE_ENTITY:
         case StatusCode.CONFLICT:
-          this.setFormErrorByLaravelResponse(res.error.errors);
+          this.setFormErrorByResponse(res);
           detailMessage = '表單輸入不允許的數值，請修改表單';
           break;
         default:
           detailMessage = '連線異常！請稍後再試';
           break;
       }
-      this.endLoading(false, '儲存失敗', detailMessage);
+      this.endLoading(false, this.defaultErrorMessage, detailMessage);
       return;
     };
   }
 
-  setFormErrorByLaravelResponse(errors: { [key: string]: string[] }): void {
-    for (const [fieldName, messages] of Object.entries(errors)) {
-      this.errorMessagesFromResponse[fieldName] = messages.map((message) => {
-        if (message.includes('has already been taken.')) {
-          message = '此欄位無法重複輸入相同數值';
-        }
-        return message;
-      });
-      const abstractControl = this.form.get(fieldName);
-      if (!abstractControl) {
-        continue;
-      }
-      abstractControl.setErrors({invalid_from_api_response: true});
-    }
+  /**
+   * 常用於關閉載入畫面
+   *
+   * @param rx
+   */
+  afterSubmit(rx: Observable<any>) {
+    const fn = () => {
+      this.loading.end();
+      this.isLoading = false;
+    };
+    return rx.pipe(tap({
+      next: fn,
+      error: fn,
+    }));
+  }
+
+  setFormErrorByResponse(res: HttpErrorResponse): void {
+    this.httpErrorMessager.setMessagesFromHttp(this._form, res);
   }
 
   controlIsInvalid(controlName: string): boolean {
     try {
-      const control = this.form.get(controlName);
+      const control = this._form.get(controlName);
 
       return control.invalid && control.touched;
     } catch (e) {
@@ -102,41 +115,26 @@ export class FormHelper {
     }
   }
 
-  controlMessage(controlName: string, errors?: ValidationErrors): string[] {
-    errors = errors || this.form.get(controlName).errors;
-    let errorMessages = setFormFieldErrorsFromNgValidators(errors);
-    errorMessages = errorMessages.concat(this.errorMessagesFromResponse[controlName] || []);
+  controlMessage(controlName: string): string[] {
+    if (!this.controlIsInvalid(controlName)) {
+      return [];
+    }
+    let errorMessages = this.ngErrorMessager.getMessagesFromControlErrors(
+      this._form.get(controlName).errors
+    );
+    errorMessages = errorMessages.concat(this.httpErrorMessager.getMessage(controlName));
 
     return errorMessages;
   }
 
-  formPageBind(): FormPage {
-    return {
-      form: this.form,
-      helper: this,
-    };
-  }
-
-  handleResponse(successStatusCode: StatusCode) {
+  subscribeHttpResult(successStatusCode: StatusCode) {
     return {
       next: this.defaultFormSubmitSuccessFn()(successStatusCode),
       error: this.defaultFormSubmitFailedFn(),
     };
   }
 
-  private startLoading(): void {
-    this.isLoading = true;
-    this.errorMessagesFromResponse = {};
-
-    this.showSpinner();
+  get form(): FormGroup {
+    return this._form;
   }
-
-  private showSpinner(): Promise<unknown> {
-    return this.spinner.show();
-  }
-
-  private hideSpinner(): Promise<unknown> {
-    return this.spinner.hide();
-  }
-
 }

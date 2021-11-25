@@ -37,6 +37,7 @@ export {fillZeroWhenLessThanTen} from './lib/utils/fill-zero-when-less-than-ten'
 export {getLastOne} from './lib/utils/get-last-one';
 export {isEmptyExceptZero} from './lib/utils/is-empty-except-zero';
 export {isNilOrEmpty} from './lib/utils/is-nil-or-empty';
+export {getNestedProp} from './lib/utils/nested-prop-is-exists';
 export {nestedPropIsExists} from './lib/utils/nested-prop-is-exists';
 export {numberFormat} from './lib/utils/number-format';
 export {prettyJsonString} from './lib/utils/pretty-json-string';
@@ -46,10 +47,16 @@ export * from './lib/utils/string-or-number-type';
  * modules
  */
 /** Form */
-export {setFormFieldErrorsFromNgValidators} from './modules/form/lib/set-form-field-errors-from-ng-validators';
-// export {FormHelperService} from './modules/form/services/form-helper.service';
+export {BaseFormHelperFactory} from './modules/form/lib/base-form-helper-factory';
+export {LaravelHttpErrorMessage} from './modules/form/lib/plugin/laravel-http-error-message';
+export {NgErrorMessager} from './modules/form/lib/plugin/ng-error-messager';
+export {NgxSpinnerLoading} from './modules/form/lib/plugin/ngx-spinner-loading';
+export {SweetalertEnding} from './modules/form/lib/plugin/sweetalert-ending';
+export {FormEnding} from './modules/form/lib/form-ending';
 export {FormHelper} from './modules/form/lib/form-helper';
-export {FormPage} from './modules/form/lib/form-page';
+export {FormHttpErrorMessager} from './modules/form/lib/form-http-error-messager';
+export {FormLoading} from './modules/form/lib/form-loading';
+export {FormNgErrorMessager} from './modules/form/lib/form-ng-error-messager';
 
 export {RequiredLabelDirective} from './modules/form/directives/required-label.directive';
 
@@ -61,7 +68,12 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 
 export {FormModule} from './modules/form/form.module';
 /** Bootstrap Form */
+export {SelectOption} from './modules/bootstrap-form/lib/select.option';
 export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
+export {BootstrapSelectComponent} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
+export {BootstrapTextareaComponent} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
+export {BaseComponent} from './modules/bootstrap-form/components/base.component';
+
 export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
 /** Bootstrap Table */
 export {BootstrapTableComponent} from './modules/bootstrap-table/components/bootstrap-table/bootstrap-table.component';

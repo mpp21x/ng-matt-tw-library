@@ -5,8 +5,7 @@
          [formControl]="this.getControl()"
          [maxLength]="maxLength"
          [ngClass]="{'is-invalid':showIsInvalid}"
-         [placeholder]="placeholder"
-         [disabled]="disabled">
+         [placeholder]="placeholder">
   <span class="invalid-feedback"
         *ngIf="showIsInvalid">
           {{errorMessages}}

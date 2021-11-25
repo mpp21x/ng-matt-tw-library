@@ -16,6 +16,10 @@
     "typedef": [
       false,
       "call-signature"
+    ],
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
     ]
   }
 }

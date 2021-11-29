@@ -14,7 +14,7 @@ export class BaseComponent {
   showLabelIsRequired() {
     if (this.isRequired !== null) {
       return this.isRequired;
-    } else if (this.isRequired === null && !R.is(FormControl, this.getControl())) {
+    } else if (!R.is(FormControl, this.getControl())) {
       return false;
     } else {
       return checkHasValidator(this.getControl(), Validators.required);

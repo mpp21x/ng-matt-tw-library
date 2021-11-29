@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
 import {BaseComponent} from '../base.component';
 
@@ -7,7 +7,7 @@ import {BaseComponent} from '../base.component';
   templateUrl: './bootstrap-textarea.component.html',
   styleUrls: ['./bootstrap-textarea.component.scss']
 })
-export class BootstrapTextareaComponent extends BaseComponent implements OnInit {
+export class BootstrapTextareaComponent extends BaseComponent implements OnInit, OnChanges {
 
   @Input() labelText = '';
   @Input() isRequired: null | boolean = null;
@@ -24,5 +24,10 @@ export class BootstrapTextareaComponent extends BaseComponent implements OnInit 
 
   ngOnInit(): void {
   }
+
+  ngOnChanges(): void {
+    console.log('ok');
+  }
+
 }
 

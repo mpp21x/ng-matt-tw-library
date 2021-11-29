@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
 import {SelectOption} from '../../lib/select.option';
 import * as R from 'ramda';
@@ -10,18 +10,10 @@ import {BaseComponent} from '../base.component';
   styleUrls: ['./bootstrap-select.component.scss']
 })
 export class BootstrapSelectComponent extends BaseComponent {
-
-  @Input() labelText = '';
-
   @Input() name = '';
   @Input() isMultiple = false;
-  @Input() control: AbstractControl;
-  @Input() showIsInvalid = false;
-  @Input() errorMessages = '';
-
   @Input() options: SelectOption[] = [];
   @Input() size = 5;
-
   @Output() changeSelect = new EventEmitter<Event>();
 
   isSelected(option: SelectOption): boolean {

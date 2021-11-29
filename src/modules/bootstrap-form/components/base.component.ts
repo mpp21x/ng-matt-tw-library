@@ -8,8 +8,12 @@ import {checkHasValidator} from '../../form/validators/check-has-validator';
 })
 export class BaseComponent {
 
+  @Input() labelText = '';
   @Input() isRequired = false;
   @Input() control: AbstractControl;
+  @Input() showIsInvalid = false;
+  @Input() errorMessages = '';
+
 
   showLabelIsRequired() {
     if (this.isRequired !== null) {

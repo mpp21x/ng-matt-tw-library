@@ -1,9 +1,7 @@
 /*
  * Public API Surface of ng-matt-tw-library
  */
-/**
- * lib
- */
+
 /** check */
 import {NgModule} from '@angular/core';
 import {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
@@ -69,10 +67,14 @@ export {ValidatorsCheckDate} from './modules/form/validators/validators-check-da
 
 export {FormModule} from './modules/form/form.module';
 /** Bootstrap Form */
-export {SelectOption} from './modules/bootstrap-form/lib/select.option';
+export {SelectOption} from './modules/bootstrap-form/lib/bootstrap-select/select-option';
 export {BootstrapInputComponent} from './modules/bootstrap-form/components/bootstrap-input/bootstrap-input.component';
-export {BootstrapSelectComponent} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
-export {BootstrapTextareaComponent} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
+export {
+  BootstrapSelectComponent
+} from './modules/bootstrap-form/components/bootstrap-select/bootstrap-select.component';
+export {
+  BootstrapTextareaComponent
+} from './modules/bootstrap-form/components/bootstrap-textarea/bootstrap-textarea.component';
 export {BaseComponent} from './modules/bootstrap-form/components/base.component';
 
 export {BootstrapFormModule} from './modules/bootstrap-form/bootstrap-form.module';
@@ -82,6 +84,11 @@ export {
   BootstrapPaginationTableComponent
 } from './modules/bootstrap-table/components/bootstrap-pagination-table/bootstrap-pagination-table.component';
 export {BootstrapTableModule} from './modules/bootstrap-table/bootstrap-table.module';
+
+/** Spinner */
+export {CustomSpinner} from './modules/spinner/lib/custom-spinner';
+export {ObservableSpinnerWrapper} from './modules/spinner/service/observable-spinner-wrapper.service';
+
 
 const MODULES = [
   FormModule,

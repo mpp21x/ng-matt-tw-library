@@ -20,9 +20,6 @@ export class BootstrapTableComponent {
 
   @Output() reload = new EventEmitter();
 
-  constructor() {
-  }
-
   onReload() {
     this.reload.emit();
   }

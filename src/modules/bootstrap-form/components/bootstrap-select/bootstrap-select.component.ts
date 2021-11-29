@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
-import {SelectOption} from '../../lib/select.option';
+import {SelectOption} from '../../lib/bootstrap-select/select-option';
 import * as R from 'ramda';
 import {BaseComponent} from '../base.component';
 

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {checkHasValidator} from '../../../form/validators/check-has-validator';
 import * as R from 'ramda';
@@ -9,7 +9,7 @@ import * as R from 'ramda';
   styleUrls: ['./bootstrap-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BootstrapInputComponent implements OnChanges {
+export class BootstrapInputComponent  {
   @Input() labelText = '';
   @Input() isRequired: null | boolean = null;
   @Input() type: 'text' | 'file' | 'number' | 'time' | 'email' | 'password' = 'text';
@@ -19,19 +19,10 @@ export class BootstrapInputComponent implements OnChanges {
   @Input() maxLength = 50;
   @Input() placeholder = '';
 
-  constructor(
-    protected readonly changeDetectorRef: ChangeDetectorRef,
-  ) {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.changeDetectorRef.markForCheck();
-  }
-
   showLabelIsRequired() {
     if (this.isRequired !== null) {
       return this.isRequired;
-    } else if (this.isRequired === null && !R.is(FormControl, this.getControl())) {
+    } else if (!R.is(FormControl, this.getControl())) {
       return false;
     } else {
       return checkHasValidator(this.getControl(), Validators.required);

@@ -34,8 +34,4 @@ export class BootstrapPaginationTableComponent {
   onSearch() {
     this.onChangePage(this.currentPage);
   }
-
-  getIsNotEmpty() {
-    return this.isNotEmpty;
-  }
 }

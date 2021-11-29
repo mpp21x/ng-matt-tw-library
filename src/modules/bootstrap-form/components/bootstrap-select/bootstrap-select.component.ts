@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
 import {SelectOption} from '../../lib/select.option';
 import * as R from 'ramda';
@@ -9,7 +9,7 @@ import {BaseComponent} from '../base.component';
   templateUrl: './bootstrap-select.component.html',
   styleUrls: ['./bootstrap-select.component.scss']
 })
-export class BootstrapSelectComponent extends BaseComponent implements OnInit, OnChanges {
+export class BootstrapSelectComponent extends BaseComponent {
 
   @Input() labelText = '';
 
@@ -23,18 +23,6 @@ export class BootstrapSelectComponent extends BaseComponent implements OnInit, O
   @Input() size = 5;
 
   @Output() changeSelect = new EventEmitter<Event>();
-
-  constructor(readonly change: ChangeDetectorRef) {
-    super();
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.change.markForCheck();
-    this.change.detectChanges();
-  }
 
   isSelected(option: SelectOption): boolean {
     if (!this.isMultiple) {

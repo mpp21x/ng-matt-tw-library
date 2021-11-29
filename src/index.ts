@@ -57,6 +57,7 @@ export {FormHelper} from './modules/form/lib/form-helper';
 export {FormHttpErrorMessager} from './modules/form/lib/form-http-error-messager';
 export {FormLoading} from './modules/form/lib/form-loading';
 export {FormNgErrorMessager} from './modules/form/lib/form-ng-error-messager';
+export {selectFirstOne} from './modules/form/lib/select-first-one';
 
 export {RequiredLabelDirective} from './modules/form/directives/required-label.directive';
 

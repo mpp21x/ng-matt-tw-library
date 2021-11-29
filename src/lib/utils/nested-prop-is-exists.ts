@@ -1,4 +1,4 @@
-export function getNestedProp(nestedProperty: string, target: unknown) {
+export function getNestedProp<T>(nestedProperty: string, target: unknown) {
 
   const restOfPropertyNames = nestedProperty.split('.');
   const length = restOfPropertyNames.length;
@@ -9,7 +9,7 @@ export function getNestedProp(nestedProperty: string, target: unknown) {
     }
     target = target[restOfPropertyNames[i]];
   }
-  return target;
+  return target as T;
 }
 
 

@@ -19,10 +19,6 @@ export class BootstrapPaginationTableComponent {
 
   @Output() changePage = new EventEmitter<number>();
 
-
-  constructor() {
-  }
-
   getTotal() {
     return this.total > 10000 ? 10000 : this.total;
   }
